@@ -1,0 +1,2 @@
+# Meta
+Metadane projektu
