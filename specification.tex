@@ -24,64 +24,80 @@
     \par \underline{\href{https://github.com/psk-pz}{github.com/psk-pz}}.
 \end{titlepage}
 
-\section{Scenariusz tworzenia zgłoszenia}
+\section{Aktorzy}
 \begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
+\item{\textbf{Użytkownik} - klient serwisu.}
+\item{\textbf{Serwisant} - pracownik serwisu.}
+\item{\textbf{Administrator} - administrator systemu.}
 \end{enumerate}
 
-\section{Scenariusz lorem ipsum}
+\section{Encje}
 \begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
+\item{\textbf{Zgłoszenie} - zgłoszenie utworzone w systemie przez \textit{użytkownika}. Po utworzeniu przechodzi przez dozwolone stany, aż do jego zamknięcia.}
+\item{\textbf{Notyfikacja} - notyfikacje wysyłane \textit{serwisantom} oraz \textit{użytkownikom} w momencie wystąpienia określonych zdarzeń.}
 \end{enumerate}
 
-\section{Scenariusz lorem ipsum}
+\section{Stany zgłoszenia}
 \begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
+\item{\textbf{Otwarte} - nowo utworzone zgłoszenie.}
+\item{\textbf{Odrzucone} - odrzucone przez \textit{serwisanta} lub \textit{użytkownika}.}
+\item{\textbf{Ponownie otwarte} - ponownie otwarte po uprzednim odrzuceniu.}
+\item{\textbf{Przyjęte} - przyjęte prez \textit{serwisanta} do wyceny.}
+\item{\textbf{Oczekuje na akceptację} - oczekuje na akceptację kosztów.}
+\item{\textbf{Zaakceptowane} - zaakceptowane prez \textit{użytkownika}.}
+\item{\textbf{W trakcie pracy} - w trakcie naprawy sprzętu przez \textit{serwisanta}.}
+\item{\textbf{Nie można naprawić} - odesłany nienaprawiony sprzęt.}
+\item{\textbf{Wysłane} - odesłany naprawiony sprzęt.}
+\item{\textbf{Zakończone} - zgłoszenie zostaje zarchiwizowane.}
 \end{enumerate}
 
-\section{Scenariusz lorem ipsum}
+\vfill
+
+\section{Scenariusz odrzucenia zgłoszenia}
 \begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
+\item{\textit{Użytkownik} odwiedza stronę z formularzem do utworzenia zgłoszenia.}
+\item{\textit{Użytkownik} wysyła dane do utworzenia zgłoszenia.}
+\item{Jeżeli wystąpiły błędy:}
+\begin{enumerate}
+\item{Błędy są wyświetlane na ekranie.}
+\item{\textit{Użytkownik} poprawia dane oraz powraca do kroku 2.}
+\end{enumerate}
+\item{Wyświetlany jest komunikat o sukcesie oraz identyfikator zgłoszenia.}
+\item{Tworzona jest notyfikacja o utworzeniu nowego zgłoszenia w systemie widoczna dla \textit{serwisantów}.}
 \end{enumerate}
 
-\section{Scenariusz lorem ipsum}
+\section{Scenariusz odczytania stanu zgłoszenia}
 \begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
+\item{\textit{Użytkownik} odwiedza stronę z formularzem wymagającym identyfikatora zgłoszenia.}
+\item{\textit{Użytkownik} wysyła identyfikator zgłoszenia.}
+\item{Jeżeli zgłoszenie nie istnieje:}
+\begin{enumerate}
+\item{Błąd jest wyświetlane na ekranie.}
+\item{\textit{Użytkownik} powraca do kroku 1.}
+\end{enumerate}
+\item{Wyświetlany jest aktualny stan zgłoszenia oraz jego historia.}
+\item{Wyświetlane są również notyfikacje dotyczące zgłoszenia.}
 \end{enumerate}
 
-\section{Scenariusz lorem ipsum}
+\section{Scenariusz odrzucenia wyceny}
 \begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
+\item{\textit{Serwisant} otrzymuje notfikację o nowym zgłoszeniu.}
+\item{\textit{Serwisant} przyjmuje zgłoszenie do wyceny.}
+\item{\textit{Serwisant} wycenia koszta naprawy oraz przekazuje do akceptacji przez \textit{użytkownika}.}
+\item{\textit{Użytkownik} otrzymuje notyfikację o wycenia do zaakceptowania.}
+\item{\textit{Użytkownik} odrzuca koszta wyceny.}
+\item{\textit{Serwisant} zamyka zgłoszenie.}
 \end{enumerate}
 
-\section{Scenariusz lorem ipsum}
+\section{Scenariusz wykonania naprawy}
 \begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
-\end{enumerate}
-
-\section{Scenariusz lorem ipsum}
-\begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
-\end{enumerate}
-
-\section{Scenariusz lorem ipsum}
-\begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
-\end{enumerate}
-
-\section{Scenariusz lorem ipsum}
-\begin{enumerate}
-\item{Lorem ipsum dolor sit amet.}
-\item{Lorem ipsum dolor sit amet.}
+\item{\textit{Serwisant} otrzymuje notfikację o nowym zgłoszeniu.}
+\item{\textit{Serwisant} przyjmuje zgłoszenie do wyceny.}
+\item{\textit{Serwisant} wycenia koszta naprawy oraz przekazuje do akceptacji przez \textit{użytkownika}.}
+\item{\textit{Użytkownik} otrzymuje notyfikację o wycenia do zaakceptowania.}
+\item{\textit{Użytkownik} akceptuje koszta wyceny.}
+\item{...}
+\item{\textit{Użytkownik} zamyka zgłoszenie.}
 \end{enumerate}
 
 \end{document}
