@@ -26,7 +26,7 @@
 
 \section{Aktorzy}
 \begin{enumerate}
-\item{\textbf{Użytkownik} - klient serwisu.}
+\item{\textbf{Klient} - klient serwisu.}
 \item{\textbf{Serwisant} - pracownik serwisu.}
 \item{\textbf{Administrator} - administrator systemu.}
 \end{enumerate}
@@ -39,19 +39,77 @@
 
 \section{Stany zgłoszenia}
 \begin{enumerate}
-\item{\textbf{Otwarte} - nowo utworzone zgłoszenie.}
-\item{\textbf{Odrzucone} - odrzucone przez \textit{serwisanta} lub \textit{użytkownika}.}
-\item{\textbf{Ponownie otwarte} - ponownie otwarte po uprzednim odrzuceniu.}
-\item{\textbf{Przyjęte} - przyjęte prez \textit{serwisanta} do wyceny.}
-\item{\textbf{Oczekuje na akceptację} - oczekuje na akceptację kosztów.}
-\item{\textbf{Zaakceptowane} - zaakceptowane prez \textit{użytkownika}.}
-\item{\textbf{W trakcie pracy} - w trakcie naprawy sprzętu przez \textit{serwisanta}.}
-\item{\textbf{Nie można naprawić} - odesłany nienaprawiony sprzęt.}
-\item{\textbf{Wysłane} - odesłany naprawiony sprzęt.}
-\item{\textbf{Zakończone} - zgłoszenie zostaje zarchiwizowane.}
+\item{\textbf{Zgłoszone} - zgłoszenie utworzone lub ponownie otwarte przez \textit{klienta}.}
+\begin{enumerate}
+\item{\textbf{Przyjęte do diagnozy}}
+\item{\textbf{Zakończone}}
+\end{enumerate}
+\item{\textbf{Przyjęte do diagnozy} - przyjęte prez \textit{serwisanta} do diagnozy.}
+\begin{enumerate}
+\item{\textbf{Oczekuje na akceptację}}
+\item{\textbf{Zakończone}}
+\end{enumerate}
+\item{\textbf{Oczekuje na akceptację} - oczekuje na akceptację przez \textit{klienta}.}
+\begin{enumerate}
+\item{\textbf{W trakcie naprawy}}
+\item{\textbf{Gotowy do odbioru}}
+\item{\textbf{Zakończone}}
+\end{enumerate}
+\item{\textbf{W trakcie naprawy} - w trakcie naprawy przez \textit{serwisanta}.}
+\begin{enumerate}
+\item{\textbf{Gotowy do odbioru}}
+\end{enumerate}
+\item{\textbf{Gotowy do odbioru} - oczekuje na odbiór przez \textit{klienta}.}
+\begin{enumerate}
+\item{\textbf{Zakończone}}
+\end{enumerate}
+\item{\textbf{Zakończone} - zgłoszenie zakończone.}
+\begin{enumerate}
+\item{\textbf{W trakcie naprawy}}
+\item{\textbf{Przyjęte do diagnozy}}
+\end{enumerate}
 \end{enumerate}
 
 \vfill
+
+\section{User stories}
+Jako \textit{klient} chcę \textit{naprawić telefon}, więc muszę mieć \textit{możliwość zgłoszenia go do
+serwisu}.
+\bigskip
+\par Scenariusz \textbf{pomyślnej naprawy telefonu}:
+\begin{enumerate}
+\item{\textit{Klient} odwiedza stronę z formularzem do utworzenia zgłoszenia.}
+\item{\textit{Klient} pomyślnie utworzył zgłoszenie.}
+\item{\textit{Serwisant} otrzymuje notyfikację.}
+\item{\textit{Serwisant} przyjmuje sprzęt do diagnozy.}
+\item{\textit{Serwisant} wycenia naprawę i przekazuje do akcpetacji klienta.}
+\item{\textit{Klient} otrzymuje notyfikację.}
+\item{\textit{Klient} akceptuje koszta naprawy.}
+\item{\textit{Serwisant} naprawia sprzęt i przygotowuje do odbioru.}
+\item{\textit{Klient} odbiera naprawiony sprzęt.}
+\end{enumerate}
+\bigskip
+\par Scenariusz \textbf{odrzucenia kosztorysu}:
+\begin{enumerate}
+\item{\textit{Klient} odwiedza stronę z formularzem do utworzenia zgłoszenia.}
+\item{\textit{Klient} pomyślnie utworzył zgłoszenie.}
+\item{\textit{Serwisant} otrzymuje notyfikację.}
+\item{\textit{Serwisant} przyjmuje sprzęt do diagnozy.}
+\item{\textit{Serwisant} wycenia naprawę i przekazuje do akcpetacji klienta.}
+\item{\textit{Klient} otrzymuje notyfikację.}
+\item{\textit{Klient} nie akceptuje kosztów naprawy.}
+\item{\textit{Klient} odbiera nienaprawiony sprzęt.}
+\end{enumerate}
+\bigskip
+\par Scenariusz \textbf{braku możliwości naprawy}:
+\begin{enumerate}
+\item{\textit{Klient} odwiedza stronę z formularzem do utworzenia zgłoszenia.}
+\item{\textit{Klient} pomyślnie utworzył zgłoszenie.}
+\item{\textit{Serwisant} otrzymuje notyfikację.}
+\item{\textit{Serwisant} przyjmuje sprzęt do diagnozy.}
+\item{\textit{Serwisant} nie naprawia sprzętu i przygotowuje do odbioru.}
+\item{\textit{Klient} odbiera nienaprawiony sprzęt.}
+\end{enumerate}
 
 \section{Scenariusz odrzucenia zgłoszenia}
 \begin{enumerate}
@@ -65,6 +123,8 @@
 \item{Wyświetlany jest komunikat o sukcesie oraz identyfikator zgłoszenia.}
 \item{Tworzona jest notyfikacja o utworzeniu nowego zgłoszenia w systemie widoczna dla \textit{serwisantów}.}
 \end{enumerate}
+
+\bigskip
 
 \section{Scenariusz odczytania stanu zgłoszenia}
 \begin{enumerate}
